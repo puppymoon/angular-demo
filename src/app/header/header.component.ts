@@ -9,14 +9,20 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  keyword = '555555666666';
+  keyword = '';
+
+  highlightTitle = false;
+
+  fontSize = 24;
 
   ngOnInit(): void {
   }
 
-  search(value: string){
-    alert(value);
+  search(value: string) {
+    console.log(value);
     this.keyword = 'remove';
+    this.highlightTitle = !this.highlightTitle;
+    this.fontSize++;
   }
 
 }
