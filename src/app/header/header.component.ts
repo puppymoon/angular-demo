@@ -9,7 +9,14 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  keyword = '555555666666';
+
   ngOnInit(): void {
+  }
+
+  search(value: string){
+    alert(value);
+    this.keyword = 'remove';
   }
 
 }
