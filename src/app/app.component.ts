@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ArticlesService } from './articles.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ArticlesService } from './articles.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'angular-demo';
 
@@ -14,13 +14,18 @@ export class AppComponent {
 
   paragraph = 'A place to share your <u>knowledge.</u>';
 
-  // list: any[];
-  get list() {
-    return this.articlesService.list;
-  }
+  list: any[];
+  // get list() {
+  //   return this.articlesService.list;
+  // }
 
   constructor(private articlesService: ArticlesService) {
     // this.list = this.articlesService.list;
+  }
+  ngOnInit(): void {
+    this.articlesService.getArticles().subscribe(articles => {
+      this.list = articles;
+    });
   }
 
 
