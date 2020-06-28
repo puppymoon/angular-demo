@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ArticlesService } from './articles.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
 
   paragraph = 'A place to share your <u>knowledge.</u>';
 
-  list: any[];
+  list$: Observable<any[]>;
   // get list() {
   //   return this.articlesService.list;
   // }
@@ -23,9 +24,7 @@ export class AppComponent implements OnInit {
     // this.list = this.articlesService.list;
   }
   ngOnInit(): void {
-    this.articlesService.getArticles().subscribe(articles => {
-      this.list = articles;
-    });
+    this.list$ = this.articlesService.getArticles();
   }
 
 
