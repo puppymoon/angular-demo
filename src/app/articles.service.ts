@@ -10,6 +10,8 @@ export class ArticlesService {
 
   list: any[];
 
+  keyword: string;
+
   constructor(private httpClient: HttpClient) { }
 
   loadArticles() {
@@ -23,13 +25,17 @@ export class ArticlesService {
       .pipe(map((response: RootObject) => response.articles));
   }
 
-  searchArticle($event) {
-    if ($event) {
-      this.list = this.list.filter(article => article.title.indexOf($event) !== -1);
-    } else {
-      this.list = this.list;
-    }
+  searchArticle(keyword: string) {
+    this.keyword = keyword;
   }
+
+  // searchArticle($event) {
+  //   if ($event) {
+  //     this.list = this.list.filter(article => article.title.indexOf($event) !== -1);
+  //   } else {
+  //     this.list = this.list;
+  //   }
+  // }
 }
 
 interface RootObject {

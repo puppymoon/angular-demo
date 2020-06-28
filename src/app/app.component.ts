@@ -20,6 +20,10 @@ export class AppComponent implements OnInit {
   //   return this.articlesService.list;
   // }
 
+  get keyword(){
+    return this.articlesService.keyword;
+  }
+
   constructor(private articlesService: ArticlesService) {
     // this.list = this.articlesService.list;
   }
