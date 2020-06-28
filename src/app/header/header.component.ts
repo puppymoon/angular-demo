@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ArticlesService } from '../articles.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articlesService: ArticlesService) { }
 
   keyword = '';
 
@@ -22,7 +23,10 @@ export class HeaderComponent implements OnInit {
 
   search(value: string) {
 
-    this.keywordChange.emit(this.keyword);
+    this.articlesService.searchArticle(this.keyword);
+
+    // this.keywordChange.emit(this.keyword);
+
     // console.log(value);
     // this.keyword = 'remove';
     // this.highlightTitle = !this.highlightTitle;
